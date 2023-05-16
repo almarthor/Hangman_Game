@@ -12,6 +12,12 @@ class Hangman extends StatefulWidget {
 class _HangmanState extends State<Hangman> {
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Scaffold(
+      body: Column(
+        children: const [
+          Text('Hangman'),
+        ],
+      ),
+    );
   }
 }
