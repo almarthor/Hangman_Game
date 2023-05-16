@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Column());
+  runApp(
+    const MaterialApp(
+      color: Colors.white,
+    ),
+  );
 }
