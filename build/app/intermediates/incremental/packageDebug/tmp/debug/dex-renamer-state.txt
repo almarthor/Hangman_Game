@@ -1,4 +1,4 @@
-#Thu May 18 12:39:52 UTC 2023
+#Tue May 23 19:23:05 UTC 2023
 base.0=C\:\\Users\\almar\\OneDrive\\Desktop\\flutter_projects\\lokaverkefni\\Lokaverkefni_Almar\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
