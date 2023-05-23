@@ -60,15 +60,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
    assets:
-    data_repo/img/progress_0.png
-    data_repo/img/progress_1.png
-    data_repo/img/progress_2.png
-    data_repo/img/progress_3.png
-    data_repo/img/progress_4.png
-    data_repo/img/progress_5.png
-    data_repo/img/progress_6.png
-    data_repo/img/progress_7.png
-    data_repo/img/victory.png
+    images/progress_0.png
+    images/progress_1.png
+    images/progress_2.png
+    images/progress_3.png
+    images/progress_4.png
+    images/progress_5.png
+    images/progress_6.png
+    images/progress_7.png
+    images/victory.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
