@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:lokaverkefni/hangman.dart';
+import 'package:lokaverkefni/game_screen.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
-      home: Hangman(),
-    ),
-  );
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: GameScreen(),
+    );
+  }
 }
