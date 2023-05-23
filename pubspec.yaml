@@ -56,20 +56,19 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+    uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-   assets:
-    assets/images/progress_0.png    
-    assets/images/progress_1.png
-    assets/images/progress_2.png
-    assets/images/progress_3.png
-    assets/images/progress_4.png
-    assets/images/progress_5.png
-    assets/images/progress_6.png
-    assets/images/progress_7.png
-    assets/images/victory.png
-
+  assets:
+    - assets/images/progress_0.png
+    - assets/images/progress_1.png
+    - assets/images/progress_2.png
+    - assets/images/progress_3.png
+    - assets/images/progress_4.png
+    - assets/images/progress_5.png
+    - assets/images/progress_6.png
+    - assets/images/progress_7.png
+    - assets/images/victory.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
