@@ -28,7 +28,27 @@ List wordsList = [
   'FJALL',
   'HUNDUR',
   'FUGL',
-  'VEGUR'
+  'VEGUR',
+  'SKJÁBREKKA',
+  'HVALREYÐUR',
+  'FRUMTÖLUR',
+  'ÞJÓÐHAGUR',
+  'SAMFÉLAGIÐ',
+  'OSTASALAT',
+  'LEIKHÚS',
+  'VATNAJÖKULL',
+  'LÍFFRÆÐILEGT',
+  'ELDFJALL',
+  'LJÓSMYND',
+  'SNJÓKOMA',
+  'SUNDLAUG',
+  'INGOLFSFJALL',
+  'HÖFUÐSTAÐUR',
+  'BIFREIÐ',
+  'ÞOLLUR',
+  'SKEMILL',
+  'RAUÐALDINN',
+  'JARÐEPLI',
 ];
 
 List<String> letters = [
