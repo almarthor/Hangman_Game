@@ -11,6 +11,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   String word = wordsList[Random().nextInt(wordsList.length)];
+  List allGuessedLetters = [];
   List guessedAlphabets = [];
   int status = 0;
   List images = [
@@ -22,8 +23,50 @@ class _GameScreenState extends State<GameScreen> {
     'assets/images/progress_5.png',
     'assets/images/progress_6.png',
     'assets/images/progress_7.png',
-    'assets/images/victory.png'
   ];
+
+  openDialog(String title) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: Container(
+            width: MediaQuery.of(context).size.width / 2,
+            height: 180,
+            decoration: const BoxDecoration(color: Colors.blueAccent),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      setState(() {
+                        status = 0;
+                        guessedAlphabets.clear();
+                        word = wordsList[Random().nextInt(wordsList.length)];
+                      });
+                    },
+                    child: const Center(
+                      child: (StyledText('SPILA AFTUR?', 20)),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   String handleText() {
     String displayWord = '';
@@ -42,13 +85,15 @@ class _GameScreenState extends State<GameScreen> {
     if (word.contains(alphabet)) {
       setState(() {
         guessedAlphabets.add(alphabet);
+        allGuessedLetters.add(alphabet);
       });
-    } else if (status != 7) {
+    } else if (status != 6) {
       setState(() {
+        allGuessedLetters.add(alphabet);
         status += 1;
       });
     } else {
-      print('tapaðir');
+      openDialog('Looser HAHAHA');
     }
 
     bool isWon = true;
@@ -62,7 +107,7 @@ class _GameScreenState extends State<GameScreen> {
       }
     }
     if (isWon) {
-      print('won');
+      openDialog('ÓKEYYY ÞÚ VANNST!');
     }
   }
 
@@ -82,7 +127,7 @@ class _GameScreenState extends State<GameScreen> {
           child: Column(
             children: [
               const SizedBox(
-                height: 40,
+                height: 5,
               ),
               Image(
                 width: 200,
@@ -92,15 +137,18 @@ class _GameScreenState extends State<GameScreen> {
               const SizedBox(
                 height: 30,
               ),
+              //sdf
+              //StyledText(guessedAlphabets[hashCode], 20),
+              //sdf
               StyledText(handleText(), 35),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               GridView.count(
                 crossAxisCount: 7,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10),
                 children: letters.map((alphabet) {
                   return InkWell(
                     onTap: () => checkLetter(alphabet),
@@ -113,6 +161,22 @@ class _GameScreenState extends State<GameScreen> {
                   );
                 }).toList(),
               ),
+              Column(
+                children: [
+                  Container(
+                    color: const Color.fromARGB(255, 30, 21, 203),
+                    height: 200,
+                    child: ListView.builder(
+                      itemCount: allGuessedLetters.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: StyledText(allGuessedLetters[index], 25),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
