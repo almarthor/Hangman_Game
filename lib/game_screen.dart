@@ -11,6 +11,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   String word = wordsList[Random().nextInt(wordsList.length)];
+
   List allGuessedLetters = [];
   List guessedAlphabets = [];
   int status = 0;
@@ -51,6 +52,9 @@ class _GameScreenState extends State<GameScreen> {
                       Navigator.pop(context);
                       setState(() {
                         status = 0;
+                        letters.addAll(List.from(allGuessedLetters));
+                        letters.sort();
+                        allGuessedLetters.clear();
                         guessedAlphabets.clear();
                         word = wordsList[Random().nextInt(wordsList.length)];
                       });
@@ -86,11 +90,13 @@ class _GameScreenState extends State<GameScreen> {
       setState(() {
         guessedAlphabets.add(alphabet);
         allGuessedLetters.add(alphabet);
+        letters.remove(alphabet);
       });
     } else if (status != 6) {
       setState(() {
         allGuessedLetters.add(alphabet);
         status += 1;
+        letters.remove(alphabet);
       });
     } else {
       openDialog('Looser HAHAHA');
@@ -137,9 +143,6 @@ class _GameScreenState extends State<GameScreen> {
               const SizedBox(
                 height: 30,
               ),
-              //sdf
-              //StyledText(guessedAlphabets[hashCode], 20),
-              //sdf
               StyledText(handleText(), 35),
               const SizedBox(
                 height: 30,
@@ -161,22 +164,31 @@ class _GameScreenState extends State<GameScreen> {
                   );
                 }).toList(),
               ),
-              Column(
-                children: [
-                  Container(
-                    color: const Color.fromARGB(255, 30, 21, 203),
-                    height: 200,
-                    child: ListView.builder(
-                      itemCount: allGuessedLetters.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: StyledText(allGuessedLetters[index], 25),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              )
+              Container(
+                height: 50,
+                child: StyledText('BÚIÐ AÐ GISKA Á:', 20),
+              ),
+              Container(
+                height: 50,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: allGuessedLetters.map((item) {
+                    return Container(
+                      width: 20,
+                      height: 20,
+                      child: Center(
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25.0,
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
             ],
           ),
         ),
